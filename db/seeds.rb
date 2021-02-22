@@ -16,6 +16,7 @@ ride1 = Ride.create(name: 'Superman', thrill_rating: 9, open: true)
 ride2 = Ride.create(name: 'Plunger', thrill_rating: 4, open: false)
 ride3 = Ride.create(name: 'Tea Cups', thrill_rating: 1, open: false)
 ride4 = Ride.create(name: 'Twister', thrill_rating: 7, open: true)
+ride5 = Ride.create(name: 'See Saw', thrill_rating: 1, open: true)
 
 MechanicRide.create(mechanic: mechanic1, ride: ride1)
 MechanicRide.create(mechanic: mechanic2, ride: ride1)

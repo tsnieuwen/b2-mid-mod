@@ -7,3 +7,12 @@
   <li> <%=ride.name%> </li>
   <% end %>
 <% end %> </ul>
+
+<p>Add a ride to their workload:</p>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |form| %>
+<%= form.hidden_field :mechanic, value: @mechanic.id %>
+<%= form.label(:ride, 'Ride Id:') %>
+<%= form.text_field :ride %>
+<%= form.submit('Submit') %><br>
+<% end %>
