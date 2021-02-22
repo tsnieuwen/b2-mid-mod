@@ -6,14 +6,24 @@ RSpec.describe Mechanic, type: :model do
     it { should have_many(:rides).through(:mechanic_rides)}
   end
 
-  # describe 'class methods' do
-  #   it '#average_years_of_experience_mechanics' do
-  #     mechanic1 = Mechanic.create(name: 'Mo', years_experience: 18)
-  #     mechanic2 = Mechanic.create(name: 'Larry', years_experience: 10)
-  #     mechanic3 = Mechanic.create(name: 'Curly', years_experience: 2)
-  #
-  #     expect(Mechanic.average_years_of_experience_of_mechanics).to eq(15)
-  #
-  #   end
-  # end
+  describe 'instance methods' do
+    it '#ordered_rides_by_thrill' do
+      mechanic1 = Mechanic.create(name: 'Mo', years_experience: 18)
+
+
+      ride1 = Ride.create(name: 'Superman', thrill_rating: 9, open: true)
+      ride2 = Ride.create(name: 'Plunger', thrill_rating: 4, open: false)
+      ride3 = Ride.create(name: 'Tea Cups', thrill_rating: 1, open: false)
+      ride4 = Ride.create(name: 'Twister', thrill_rating: 7, open: true)
+
+      MechanicRide.create(mechanic: mechanic1, ride: ride1)
+      MechanicRide.create(mechanic: mechanic1, ride: ride4)
+      MechanicRide.create(mechanic: mechanic1, ride: ride2)
+      MechanicRide.create(mechanic: mechanic1, ride: ride3)
+
+
+      expect(mechanic1.ordered_rides_by_thrill).to eq([ride1, ride4, ride2, ride3])
+
+    end
+  end
 end
